@@ -4,47 +4,34 @@
     <title>Shopping List Check Off</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <style>
-      .emptyMessage {
-        font-weight: bold;
-        color: red;
-        font-size: 1.2em;
-      }
-      li {
-        margin-bottom: 7px;
-        font-size: 1.2em;
-      }
-      li > button {
-        margin-left: 6px;
-      }
-      button > span {
-        color: green;
-      }
-    </style>
+    <link rel="stylesheet" href="styles/styles_def.css">
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
   </head>
-<body>
+<body ng-app="ShoppingCartApp">
   <div class="container">
   <h1>Shopping List Check Off</h1>
 
   <div class="row">
 
     <!-- To Buy List -->
-    <div class="col-md-6">
+    <div class="col-md-6" ng-controller="ToBeBoughtListController as toBeBoughtCtrl">
      <h2>To Buy:</h2>
      <ul>
-       <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
-       <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+       <li ng-repeat="item in toBeBoughtCtrl.toBeBoughtItemsList">
+         Buy {{item.itemQty}} {{item.itemName}}
+          <button class="btn btn-default" ng-click="toBeBoughtCtrl.onBuyButtonClicked($index)"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
      </ul>
-     <div class="emptyMessage">Everything is bought!</div>
+     <div class="emptyMessage" ng-show="toBeBoughtCtrl.toBeBoughtItemsList.length == 0">Everything is bought!</div>
     </div>
 
     <!-- Already Bought List -->
-    <div class="col-md-6">
+    <div class="col-md-6"  ng-controller="AlreadyBoughtListController as alreadyBoughtCtrl">
      <h2>Already Bought:</h2>
      <ul>
-       <li>Bought 10 cookies</li>
+       <li ng-repeat="item in alreadyBoughtCtrl.alreadyBoughtItemsList">Bought {{ item.itemQty }} {{ item.itemName }}</li>
      </ul>
-     <div class="emptyMessage">Nothing bought yet.</div>
+     <div class="emptyMessage" ng-show="alreadyBoughtCtrl.alreadyBoughtItemsList.length == 0">Nothing bought yet.</div>
     </div>
   </div>
 </div>
