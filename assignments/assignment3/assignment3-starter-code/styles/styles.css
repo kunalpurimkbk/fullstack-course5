@@ -50,3 +50,15 @@ input[type="text"] {
     transform: rotate(360deg);
   }
 }
+
+ul {
+  display: grid;
+}
+
+div.error {
+  display: grid;
+  color: red;
+  font-weight: bold;
+  padding-left: 20px;
+  font-size: 1.8em;
+}

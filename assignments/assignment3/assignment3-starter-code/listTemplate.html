@@ -1,0 +1,14 @@
+<div class="form-group">
+    <div class="error" >{{ errorMessage }}</div>
+    <ul>
+        <li ng-repeat="item in foundItemsList">
+            {{item.name + " (" + item.shortName + ") : " + item.description}}
+            <br>
+            <div class="form-group narrow-button">
+                <button class="btn btn-primary" ng-click="onRemove({index: $index})">
+                    Don't want this one!
+                </button>
+            </div>
+        </li>
+    </ul>
+</div>
