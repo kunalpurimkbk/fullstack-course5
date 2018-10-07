@@ -1,0 +1,12 @@
+<div>
+    <h1>
+        Categories!!!
+    </h1>
+    You are here: <a ui-sref="home">Home</a> &gt; Categories
+    <ul>
+        <li ng-repeat="item in categoryListCtrl.categories">
+            <a ui-sref="itemList({category: '{{item.shortName}}' })">{{ item.name }}</a>
+        </li>
+    </ul>
+    <loading-img></loading-img>
+</div>
